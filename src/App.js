@@ -6,11 +6,11 @@ function App() {
   
   const [content, setContent] = useState(str[0])
 
-  const [data , setData]=useState('')
+  const [data , setData]=useState([])
 
   useEffect(()=>{fetch('https://jsonplaceholder.typicode.com/'+content)
   .then((response) => response.json())
-  .then((json) => setData(JSON.stringify(json)))}, [content])
+  .then((json) => setData(json))}, [content])
   
   console.log('Componente caricata...')  
 
@@ -29,7 +29,9 @@ function App() {
     <Button azione={() => show(str[1])} nome='Tweet'/>
     <Button azione={() => show(str[2])} nome='Commenti'/>
     <div>{content}</div>
-    <div>{data}</div>
+    
+    
+    {data.map((elemento)=><pre>{JSON.stringify(elemento)}</pre> )}
     </>
   );
 }
