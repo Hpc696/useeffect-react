@@ -6,12 +6,12 @@ function App() {
   
   const [content, setContent] = useState(str[0])
 
-  const [data , setData]=useState([])
+  const [data , setData]=useState('')
 
   useEffect(()=>{fetch('https://jsonplaceholder.typicode.com/'+content)
   .then((response) => response.json())
-  .then((json) => setData(json))}, [content])
-
+  .then((json) => setData(JSON.stringify(json)))}, [content])
+  
   console.log('Componente caricata...')  
 
   function show(stringhe){
